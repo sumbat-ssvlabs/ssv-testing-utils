@@ -1,3 +1,5 @@
+"use server";
+
 import NodeRSA from "node-rsa";
 import Base64 from "base-64";
 
