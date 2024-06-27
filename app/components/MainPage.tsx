@@ -13,7 +13,6 @@ export const MainPage = () => {
       };
     },
   });
-  console.log("mutation.data:", mutation.data);
 
   return (
     <main className="min-h-screen p-24 max-w-screen-lg mx-auto">

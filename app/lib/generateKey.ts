@@ -5,7 +5,11 @@ import Base64 from "base-64";
 
 const key = new NodeRSA({ b: 2048 });
 
-export const generateKey = async () => {
+export const generateKey = async (): Promise<{
+  encoded: string;
+  publicKey: string;
+  withRSA: string;
+}> => {
   return new Promise((resolve) => {
     const generated = key.generateKeyPair();
     const publicKey = generated.exportKey("public");
