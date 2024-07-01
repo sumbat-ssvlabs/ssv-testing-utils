@@ -31,18 +31,24 @@ export const MainPage = () => {
       ) : mutation.isError ? (
         <p className="text-center mb-8">Error: {mutation.error.message}</p>
       ) : null}
-      {mutation.isSuccess && (
+      {/* {mutation.isSuccess && (
         <p className="text-center mb-8">
           Generated at {mutation.data?.createdAt.toLocaleTimeString()}
         </p>
-      )}
+      )} */}
       <textarea
         rows={8}
         value={mutation.isSuccess ? mutation.data?.keys.encoded : ""}
         className="flex  w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30"
       />
       <button
-        onClick={() => mutation.mutate()}
+        onClick={() => {
+          mutation.reset();
+          setTimeout(() => {
+            mutation.mutate();
+          }, 100);
+          return;
+        }}
         className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4 hover:bg-blue-600 w-full h-12"
       >
         Generate
